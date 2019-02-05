@@ -6,10 +6,14 @@ import { BrowserRouter } from "react-router-dom";
 import rootReducer from "./store/reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+// Material-Ui
+import { MuiThemeProvider } from '@material-ui/core/styles';
 // locals
-import apolloClient from "./apolloClient";
+import apolloClient from "./config/apolloClient";
+import muiTheme from './config/materialConfig'
 // import apolloClient from "./apolloClientLeigh";
 import Routes from "./Routes";
+
 
 const store = createStore(
   rootReducer,
@@ -23,7 +27,9 @@ class App extends Component {
         <BrowserRouter>
           <ApolloProvider client={apolloClient}>
             <HooksProvider client={apolloClient}>
-              <Routes />
+              <MuiThemeProvider theme={muiTheme}>
+                <Routes />
+              </MuiThemeProvider>
             </HooksProvider>
           </ApolloProvider>
         </BrowserRouter>

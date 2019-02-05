@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
+import Navbar from "./Navbar/Navbar";
 
-export default ( {children} ) => {
+export default ({ children }) => {
   return (
-    <div>
-      {children}
-    </div>
-  )
+    <React.Fragment>
+      <Navbar />
+      <div>{children}</div>
+    </React.Fragment>
+  );
 };
