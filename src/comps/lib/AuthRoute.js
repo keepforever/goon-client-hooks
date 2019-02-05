@@ -9,12 +9,13 @@ class C extends React.PureComponent {
     const { data, component } = this.props;
 
     if (!data || data.loading) {
+      console.log('\n', 'show loading screen')
       // loading screen
       return <h1>Loading...</h1>;
     }
 
     if (!data.meUser) {
-      // user not logged in
+      console.log('\n', 'user not logged in' )
       return (
         <Redirect
           to={{
@@ -31,6 +32,7 @@ class C extends React.PureComponent {
   };
 
   render() {
+    console.log('\n', 'helloAuthRoute' )
     const { data: _, component: __, ...rest } = this.props;
     return <Route {...rest} render={this.renderRoute} />;
   }

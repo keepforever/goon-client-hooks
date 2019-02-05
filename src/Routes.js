@@ -7,8 +7,6 @@ import { AuthRoute } from './comps/lib/AuthRoute';
 import Hello from './comps/hello';
 import Login from './comps/login';
 import Home from './pages/Home'
-// test LoginHook
-import LoginHook from './comps/hook/LoginHook'
 
 class App extends Component {
   render() {
@@ -16,13 +14,12 @@ class App extends Component {
         <Layout>
           <Switch>
             <Route exact={true} path="/" component={Hello} />
-            <Route path="/login" component={Login} />
-
-            <Suspense fallback={<span style={{fontSize: 75}}>Suspense loading...</span>}>
-              <Route path="/hook" component={LoginHook} />
-            </Suspense>
-
             <AuthRoute path="/home" component={Home} />
+            <Suspense fallback={
+              <span style={{fontSize: 75}}>Suspense loading...</span>}
+            >
+            <Route path="/login" component={Login} />
+            </Suspense>
           </Switch>
         </Layout>
     );

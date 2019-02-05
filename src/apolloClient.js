@@ -5,20 +5,19 @@ import { split } from "apollo-link";
 import { createUploadLink } from "apollo-upload-client";
 import { setContext } from "apollo-link-context";
 
-
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:4000",
+  uri: process.env.REACT_APP_SERVER_WS,
   options: {
     reconnect: true
   }
 });
 
-const cache = new InMemoryCache()
+const cache = new InMemoryCache();
 
 const authLink = setContext((_, { headers }) => {
   const fetchedToken = sessionStorage.getItem("goonToken");
 
-  console.log("App.js token from authLink", '\n', fetchedToken);
+  console.log("App.js token from authLink", "\n", fetchedToken);
   return {
     headers: {
       ...headers,
@@ -33,7 +32,7 @@ const link = split(
     return kind === "OperationDefinition" && operation === "subscription";
   },
   wsLink,
-  authLink.concat(createUploadLink({ uri: "http://localhost:4000" }))
+  authLink.concat(createUploadLink({ uri: process.env.REACT_APP_SERVER_HTTP }))
 );
 
 export default new ApolloClient({
