@@ -6,11 +6,11 @@ module.exports = {
     },
     {
       to: "/home",
-      text: "Alpha"
+      text: "Home"
     },
     {
-      to: "/login",
-      text: "Login"
+      to: "/auth",
+      text: "Auth"
     },
   ],
 };

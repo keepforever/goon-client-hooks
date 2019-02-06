@@ -6,9 +6,10 @@ class Hello extends Component {
 
   render () {
     console.log('\n', 'this.props', '\n', '\n', this.props )
+    const { meQuery: { meUser: { name } } } = this.props;
 
     return (
-      <h1>Hello hello</h1>
+      <h1>Hello {name}</h1>
     );
   }
 }
