@@ -2,15 +2,15 @@ module.exports = {
   links: [
     {
       to: "/",
-      text: "Hello"
+      text: "Slash"
     },
     {
       to: "/home",
       text: "Home"
     },
     {
-      to: "/auth",
-      text: "Auth"
+      to: "/about",
+      text: "About"
     },
   ],
 };

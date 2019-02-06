@@ -19,7 +19,7 @@ class C extends React.PureComponent {
       return (
         <Redirect
           to={{
-            pathname: "/login",
+            pathname: "/",
             state: { next: routeProps.location.pathname }
           }}
         />

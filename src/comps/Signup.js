@@ -1,32 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import TextField from '@material-ui/core/TextField';
-
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-  },
-  dense: {
-    marginTop: 16,
-  },
-  menu: {
-    width: 200,
-  },
-}));
-
+import React from "react";
+import TextField from "@material-ui/core/TextField";
 
 function FilledTextFields() {
-  const classes = useStyles();
   const [values, setValues] = React.useState({
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
+    name: "",
+    email: "",
+    password: ""
   });
 
   const handleChange = name => event => {
@@ -34,19 +13,40 @@ function FilledTextFields() {
   };
 
   return (
-    <form className={classes.container} noValidate autoComplete="off">
+    <div style={styles.container}>
       <TextField
-        id="filled-name"
         label="Name"
-        className={classes.textField}
         value={values.name}
-        onChange={handleChange('name')}
+        onChange={handleChange("name")}
         margin="normal"
         variant="filled"
       />
-
-    </form>
+      <TextField
+        label="Email"
+        type="email"
+        value={values.email}
+        onChange={handleChange("email")}
+        margin="normal"
+        variant="filled"
+      />
+      <TextField
+        type="password"
+        label="Password"
+        value={values.password}
+        onChange={handleChange("password")}
+        margin="normal"
+        variant="filled"
+      />
+    </div>
   );
 }
 
 export default FilledTextFields;
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
+}
