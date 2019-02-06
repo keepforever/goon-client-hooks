@@ -9,13 +9,12 @@ class C extends React.PureComponent {
     const { data, component } = this.props;
 
     if (!data || data.loading) {
-      // console.log('\n', 'show loading screen')
       // loading screen
       return <h1>Loading...</h1>;
     }
 
+    // user not logged in
     if (!data.meUser) {
-      // console.log('\n', 'user not logged in' )
       return (
         <Redirect
           to={{

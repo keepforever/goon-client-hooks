@@ -4,7 +4,7 @@ class About extends Component {
 
   render () {
     return (
-      <h1>Hello About</h1>
+      <h1 style={{color: 'cornsilk'}}>Hello About</h1>
     );
   }
 }

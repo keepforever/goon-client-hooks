@@ -1,6 +1,9 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 import { useMutation } from "react-apollo-hooks";
 import REGISTER_MUTATION from "../../graphql/m/REGISTER_MUTATION";
 
@@ -8,11 +11,16 @@ function FilledTextFields(props) {
   const [values, setValues] = React.useState({
     name: "",
     email: "",
-    password: ""
+    password: "",
+    isSeller: false,
   });
 
   const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
+    if(name === "isSeller") {
+      setValues({ ...values, [name]: event.target.checked });
+    } else {
+      setValues({ ...values, [name]: event.target.value });
+    }
   };
 
   const mySignupMutation = useMutation(REGISTER_MUTATION, {
@@ -24,7 +32,7 @@ function FilledTextFields(props) {
     }
   });
 
-  const { email, password, name } = values;
+  const { email, password, name, isSeller } = values;
 
 
   return (
@@ -53,9 +61,17 @@ function FilledTextFields(props) {
         margin="normal"
         variant="filled"
       />
+      <FormGroup row>
+      <FormControlLabel
+        control={
+          <Checkbox checked={isSeller} onChange={handleChange('isSeller')} value="checkedA" />
+        }
+        label="Seller?"
+      />
+      </FormGroup>
       <div onClick={
         () => mySignupMutation({
-          variables: { name, email, password }
+          variables: { name, email, password, isSeller }
         })
       }>
         <Button fullWidth size="large">Submit</Button>
