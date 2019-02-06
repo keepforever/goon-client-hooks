@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { useQuery, useMutation } from "react-apollo-hooks";
+import { useMutation } from "react-apollo-hooks";
 // graphql
-import ME_QUERY from "../graphql/q/ME_QUERY";
-import LOGIN_MUTATION from "../graphql/m/LOGIN_MUTATION";
+import LOGIN_MUTATION from "../../graphql/m/LOGIN_MUTATION";
 
 export default props => {
   const [values, setValues] = useState({
@@ -21,7 +20,7 @@ export default props => {
       const newToken = res.data.userLogin.payload.token;
       sessionStorage.setItem("goonToken", newToken);
       console.log("\n", "login update complete");
-      // props.history.push("/home");
+      props.history.push("/home");
     }
   });
 
@@ -30,27 +29,31 @@ export default props => {
   return (
     <div style={styles.container}>
       <TextField
+        fullWidth
         label="Email"
         type="email"
         value={values.email}
-        onChange={handleChange("email")}
+        onChange={handleChange('email')}
         margin="normal"
         variant="filled"
       />
       <TextField
+        fullWidth
         type="password"
         label="Password"
         value={values.password}
-        onChange={handleChange("password")}
+        onChange={handleChange('password')}
         margin="normal"
         variant="filled"
       />
-      <div onClick={
-        () => myLoginMutation({
-          variables: { email, password }
-        })
-      }>
-        <Button size="large">Submit</Button>
+      <div
+        onClick={() =>
+          myLoginMutation({
+            variables: { email, password },
+          })
+        }
+      >
+        <Button variant="outlined" fullWidth size="large">Submit</Button>
       </div>
     </div>
   );
@@ -60,6 +63,5 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
   }
 };

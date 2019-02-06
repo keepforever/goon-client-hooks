@@ -1,11 +1,11 @@
 import React from 'react';
-import MyCard from '../comps/MyCard'
+import AuthCard from '../comps/auth/AuthCard'
 
 export default ( props ) => {
   return (
     <div style={styles.container}>
       <h2>Hello Landing</h2>
-      <MyCard {...props}/>
+      <AuthCard {...props}/>
     </div>
   )
 };

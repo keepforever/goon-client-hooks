@@ -7,7 +7,6 @@ import { AuthRoute } from "./comps/lib/AuthRoute";
 // import Hello from "./comps/hello";
 import Landing from "./noHook/Landing";
 import Home from "./noHook/Home";
-import Signup from "./noHook/Signup";
 import About from "./noHook/About";
 
 

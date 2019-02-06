@@ -1,17 +1,20 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import amber from '@material-ui/core/colors/amber';
-import lightBlue from '@material-ui/core/colors/lightBlue';
-import deepOrange from '@material-ui/core/colors/deepOrange';
-
 
 export default createMuiTheme({
   palette: {
     type: 'dark',
-    primary: deepOrange,
-    secondary: lightBlue,
-    error: amber,
-    contrastThreshold: 15,
-    tonalOffset: 0.2,
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
   },
   typography: { useNextVariants: true },
 });
